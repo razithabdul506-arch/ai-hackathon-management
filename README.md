@@ -1,170 +1,94 @@
 AI Hackathon Team Management Platform
-Project Documentation
-1. Project Title
 
-AI-Assisted Hackathon Team Management and Evaluation Platform
+An AI-assisted hackathon management system that allows participants to submit projects, administrators to evaluate them, and automatically generates a ranked leaderboard.
 
-2. Problem Statement
+This platform simplifies hackathon organization by combining AI-based scoring, admin validation, and real-time leaderboard generation.
 
-During hackathons or AI competitions, organizers often face several challenges:
+Project Overview
 
-Managing multiple teams and participants.
+Hackathons often struggle with managing multiple teams, collecting submissions, and fairly evaluating projects.
 
-Collecting project submissions efficiently.
+This project provides a web-based solution that allows:
 
-Evaluating projects fairly.
+Participants to submit projects easily
 
-Tracking scores and rankings.
+AI to perform preliminary evaluation
 
-Publishing results transparently.
+Admins to review and score submissions
 
-Most small events still manage these tasks manually using spreadsheets or email submissions, which leads to:
+Automatic ranking of teams through a leaderboard
 
-Disorganized data
+The system ensures transparent and efficient judging.
 
-Delayed evaluation
+Key Features
+Participant Features
 
-Difficulty tracking teams
+Submit project details
 
-Lack of transparency in scoring
+Provide demo links and GitHub repositories
 
-Therefore, an automated system is required to manage hackathon submissions and evaluations effectively.
+Upload screenshot proof of UI
 
-3. Proposed Solution
+Team-based submission
 
-This project introduces an AI-Assisted Hackathon Team Management Platform that enables:
+AI Evaluation
 
-Participants to submit their projects easily.
+AI evaluates project submissions
 
-AI to perform preliminary evaluation of submissions.
+Assigns a preliminary score based on evidence and completeness
 
-Admins to review and score projects.
+Admin Dashboard
 
-A dynamic leaderboard to display rankings.
+View all submitted projects
 
-The system integrates AI evaluation, human validation, and real-time leaderboard updates to ensure efficient and transparent judging.
+See AI scores
 
-4. Objectives
+Assign admin evaluation scores
 
-The main objectives of this project are:
+Calculate final scores automatically
 
-Simplify hackathon project submission.
+Leaderboard System
 
-Provide AI-assisted evaluation of submissions.
+Automatic ranking of teams
 
-Allow administrators to validate and score projects.
+Animated podium display for top teams
 
-Automatically calculate final scores.
+Real-time updates
 
-Display a real-time leaderboard of teams.
+Leaderboard Publishing
 
-Enable admin-controlled publication of results.
+Leaderboard is hidden until admin publishes results
 
-5. System Overview
+Admin controls when results become visible
 
-The system consists of the following modules:
+Submission Deadline
 
-1. Participant Submission Module
+Submissions automatically close after deadline
 
-Participants submit project details including:
+Prevents late entries
 
-Name
+System Workflow
+Participants submit projects
+        ↓
+AI evaluates submission
+        ↓
+Admin reviews and assigns score
+        ↓
+Final score calculated
+        ↓
+Leaderboard generated
+        ↓
+Admin publishes results
+Scoring System
 
-Team code
-
-Description of the solution
-
-Demo link
-
-GitHub repository link
-
-Screenshot proof
-
-These submissions are stored in Firebase Firestore database.
-
-2. AI Evaluation Module
-
-The system includes an AI scoring module that evaluates submissions based on:
-
-Problem relevance
-
-Availability of working demo
-
-Code repository presence
-
-UI/UX evidence
-
-Documentation clarity
-
-The AI assigns a score out of 10 points.
-
-3. Admin Evaluation Module
-
-Admins log in to the dashboard and:
-
-View all submissions
-
-Review AI scores
-
-Assign their own evaluation score
-
-Final score calculation:
+Final scores are calculated using both AI evaluation and admin review.
 
 Final Score =
 (AI Score × 0.3) + (Admin Score × 0.7)
 
-This ensures both automated evaluation and human judgment are considered.
+This ensures balanced evaluation using both automation and human judgment.
 
-4. Leaderboard System
-
-The platform automatically generates a leaderboard that:
-
-Ranks teams by final score
-
-Displays podium winners (Top 3 teams)
-
-Shows rankings for all teams
-
-The leaderboard updates in real time using Firebase database updates.
-
-5. Leaderboard Publishing Control
-
-To maintain fairness:
-
-Leaderboard remains hidden initially.
-
-Admin can click "Publish Leaderboard".
-
-Once published, all users can view the rankings.
-
-6. Submission Deadline System
-
-To prevent late entries:
-
-A deadline timer is set in the system.
-
-After the deadline:
-
-Submission button is disabled.
-
-No new projects can be submitted.
-
-6. System Architecture
-
-The system follows a client-side web application architecture.
-
-Components include:
-
-Frontend (HTML + Tailwind CSS + JavaScript)
-        ↓
-Firebase Firestore Database
-        ↓
-AI Evaluation Logic
-        ↓
-Admin Scoring System
-        ↓
-Leaderboard Rendering
-7. Technologies Used
+Technology Stack
 Frontend
 
 HTML5
@@ -173,68 +97,44 @@ Tailwind CSS
 
 JavaScript (ES Modules)
 
-Backend Services
+Backend
 
-Firebase Firestore (Database)
+Firebase Firestore Database
 
-AI Logic
-
-AI-based scoring logic implemented in JavaScript
-
-Tools
+Development Tools
 
 VS Code
 
+GitHub
+
 Firebase Console
 
-ChatGPT / AI assistance for development
+AI-assisted development tools
 
-8. Project Features
+Project Structure
+ai-hackathon-management
+│
+├── index.html
+├── submit.html
+├── admin.html
+├── admin-login.html
+├── leaderboard.html
+│
+├── js
+│   ├── firebase.js
+│   ├── submit.js
+│   ├── admin.js
+│   ├── leaderboard.js
+│   └── ai.js
+│
+├── prompts_used.txt
+└── README.md
+Database Structure
+submissions collection
 
-The platform provides the following features:
+Stores project submissions.
 
-User Features
-
-Project submission interface
-
-Team registration via team code
-
-Demo and repository submission
-
-Screenshot evidence upload
-
-Deadline-based submission control
-
-Admin Features
-
-Admin login system
-
-View all project submissions
-
-AI score display
-
-Admin evaluation input
-
-Final score calculation
-
-Leaderboard publishing control
-
-System Features
-
-AI-assisted evaluation
-
-Human validation scoring
-
-Real-time leaderboard updates
-
-Podium display for top teams
-
-Submission deadline enforcement
-
-9. Database Structure
-Collection: submissions
-
-Example document:
+Example:
 
 name: Abdul
 team: A
@@ -246,81 +146,69 @@ screenshot: https://image.com/demo.png
 aiScore: 6
 adminScore: 9
 finalScore: 8.1
-Collection: settings
+settings collection
+
+Controls leaderboard visibility.
+
 leaderboard
-   public: true / false
+    public: true / false
+Installation
 
-Used to control leaderboard visibility.
+Clone the repository:
 
-10. System Workflow
-Step 1 – Student Submission
+git clone https://github.com/razithabdul506-arch/ai-hackathon-management.git
 
-Participants open the submission page and provide:
+Open the project folder and run using Live Server in VS Code.
 
-Name
+Usage
+Participant
 
-Team code
+Open:
 
-Project description
+submit.html
 
-Demo link
+Submit project details.
 
-GitHub repository
+Admin
 
-Screenshot proof
+Open:
 
-Step 2 – AI Evaluation
+admin-login.html
 
-The AI module evaluates the submission and generates a preliminary score.
+Admin password:
 
-Step 3 – Admin Evaluation
+admin123
 
-Admins review submissions and provide additional scores.
+Admin can review submissions and publish leaderboard.
 
-Step 4 – Final Score Calculation
+Leaderboard
 
-Final score is computed automatically.
+Open:
 
-Step 5 – Leaderboard Generation
+leaderboard.html
 
-Teams are ranked based on final scores.
+Shows ranked teams after admin publishes results.
 
-Step 6 – Result Publication
+Future Improvements
 
-Admin publishes leaderboard for public viewing.
+Possible improvements include:
 
-11. Advantages
+AI analysis of GitHub repositories
 
-The system offers several benefits:
-
-Automates hackathon management
-
-Ensures fair evaluation
-
-Reduces manual workload
-
-Provides transparent scoring
-
-Enables real-time leaderboard updates
-
-12. Future Improvements
-
-Future enhancements may include:
-
-Full AI project code analysis
-
-GitHub repository auto-scanning
-
-File upload via Firebase Storage
+File upload using Firebase Storage
 
 Multi-admin authentication
 
-Detailed AI feedback for each project
+Detailed AI feedback for submissions
 
-13. Conclusion
+Advanced judging analytics
 
-The AI-Assisted Hackathon Team Management Platform successfully demonstrates how artificial intelligence and web technologies can streamline hackathon management.
+Author
 
-By integrating AI evaluation, admin validation, and a real-time leaderboard, the system provides a scalable and transparent solution for managing innovation competitions.
+Abdul Razith
 
-This platform can be further expanded to support larger hackathons and automated judging systems.
+AI Hackathon Project
+
+License
+
+This project is for educational and hackathon demonstration purposes.
