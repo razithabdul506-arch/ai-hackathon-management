@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Submit Project</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<div class="bg-white p-10 rounded-xl shadow w-96">
+
+<h2 class="text-2xl font-bold mb-6">Submit Project</h2>
+
+<input id="name" class="border p-3 w-full mb-3" placeholder="Your Name">
+
+<input id="team" class="border p-3 w-full mb-3" placeholder="Team Code">
+
+<textarea id="desc" class="border p-3 w-full mb-3"
+placeholder="Explain how your solution solves the problem"></textarea>
+
+<input id="demo" class="border p-3 w-full mb-3"
+placeholder="Live Demo Link (optional)">
+
+<input id="github" class="border p-3 w-full mb-3"
+placeholder="GitHub Repository (optional)">
+
+<input id="screenshot" class="border p-3 w-full mb-4"
+placeholder="Screenshot URL (optional)">
+
+<button id="submitBtn"
+class="bg-green-600 text-white w-full py-3 rounded">
+Submit Project
+</button>
+
+</div>
+
+<script type="module" src="js/submit.js"></script>
+
+<!-- Deadline control -->
+<script>
+
+const deadline = new Date("2026-04-01T18:00:00").getTime()
+
+const now = new Date().getTime()
+
+if(now > deadline){
+
+const btn = document.getElementById("submitBtn")
+
+btn.disabled = true
+btn.innerText = "Submissions Closed"
+btn.classList.remove("bg-green-600")
+btn.classList.add("bg-gray-400")
+
+}
+
+</script>
+
+</body>
+</html>
